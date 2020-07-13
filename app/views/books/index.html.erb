@@ -1,32 +1,27 @@
-<h1>Books</h1>
-<table>
-	<tr>
-		<th></th>
-		<th>Title</th>
-		<th>Opinion</th>
-	</tr>
-	<% @books.each do |book| %>
-	<tr>
-		<td>user</td>
-		<td><%= book.title %></td>
-		<td><%= book.body %></td>
-	</tr>
-	<% end %>
-</table>
-<h1>New book</h1>
-<%= form_for(@book) do |f| %>
-	<% if @book.errors.any? %>
-		<h2><%= @book.errors.count %>件のエラーが発生しました。</h2>
-		<ul>
-			<%= @book.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-			<% end %>
-		</ul>
-	<% end %>
-	<h4>Title</h4>
-	<%= f.text_field :title %>
-	<h4>0pinion</h4>
-	<%= f.text_area :body %>
-	<br>
-	<%= f.submit "Create Book" %>
-<% end %>
+<p class="notice">
+			<%= notice %>
+			</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3" >
+			<%= render "books/list", books: @books, users: @users, book: @book, user: @user %>
+		</div>
+		<div class="col-xs-9">
+			<h1>Books</h1>
+			<table class="table table-striped">
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Opinion</th>
+				</tr>
+				<% @books.each do |book| %>
+				<tr>
+					<td><%= link_to attachment_image_tag( book.user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg"), user_path(book.user_id)%></td>
+					<td><%= link_to "#{book.title}", book_path(book.id) %></td>
+					<td><%= book.body %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
