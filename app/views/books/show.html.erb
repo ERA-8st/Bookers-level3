@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-3">
-			<%= render "books/list", books: @books, users: @users, book: @book, user: @user %>
+			<%= render "books/list", books: @books, users: @users, book: @bookn, user: @user %>
 		</div>
 		<div class="col-xs-9">
 			<p class="notice">
@@ -20,7 +20,7 @@
 					</tr>
 					<% else %>
 					<tr>
-					<td><%= attachment_image_tag @user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg"%><br><%= link_to "#{@user.name}", user_path(@user.id) %></td>
+					<td><%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg"%><br><%= link_to "#{@user.name}", user_path(@user.id) %></td>
 					<td><%= @book.title %></td>
 					<td><%= @book.body %></td>
 				    </tr>

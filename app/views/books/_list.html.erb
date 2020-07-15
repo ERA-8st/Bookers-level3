@@ -9,7 +9,8 @@
 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 <% end %>
 <% else %>
-<%= link_to "edit", user_path(user.id) %>
+<%= link_to user_path(user.id), class: 'btn btn-default btn-block' do %>
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %>
 <% end %>
 
 
